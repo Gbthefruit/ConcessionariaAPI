@@ -1,0 +1,6 @@
+@ConcessionariaAPI_HostAddress = http://localhost:5142
+
+GET {{ConcessionariaAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
