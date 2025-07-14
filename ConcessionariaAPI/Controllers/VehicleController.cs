@@ -7,7 +7,7 @@ namespace ConcessionariaAPI.Controllers {
 
 	[Route("[Controller]")]
 	[ApiController]
-	public class VehicleController : Controller {
+	public class VehicleController : ControllerBase {
 
 		private readonly ConcessDbContext _context;
 

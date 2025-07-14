@@ -7,7 +7,7 @@ using Microsoft.OpenApi.Validations;
 namespace ConcessionariaAPI.Controllers {
 	[Route("[Controller]")]
 	[ApiController]
-	public class BrandController : Controller {
+	public class BrandController : ControllerBase {
 
 		private readonly ConcessDbContext _context;
 
