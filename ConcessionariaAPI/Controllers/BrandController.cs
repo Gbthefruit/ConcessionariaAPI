@@ -3,6 +3,8 @@ using ConcessionariaAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Validations;
+using System.Runtime.Intrinsics.X86;
+using System.Text.RegularExpressions;
 
 namespace ConcessionariaAPI.Controllers {
 	[Route("[Controller]")]
@@ -18,7 +20,11 @@ namespace ConcessionariaAPI.Controllers {
 		[HttpGet("Veiculos")]
 		public ActionResult<IEnumerable<Brand>> GetBrandVehicle() {
 			try {
-				return _context.Brands.Include(b => b.Vehicles).Where(b => b.Id <= 5).ToList();
+				var itens = _context.Brands.Include(b => b.Vehicles).Where(b => b.Id <= 5).ToList();
+				if (itens is null) {
+					return NotFound("Nenhuma marca com esse ID foi encontrada...");
+				}
+				return Ok(itens);
 			}
 			catch (Exception) {
 				return StatusCode(StatusCodes.Status500InternalServerError, "Ocorreu um erro com a sua solicitação.");

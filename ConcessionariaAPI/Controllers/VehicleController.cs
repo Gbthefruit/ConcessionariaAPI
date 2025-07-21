@@ -82,7 +82,7 @@ namespace ConcessionariaAPI.Controllers {
 		public ActionResult Delete(int id) {
 			try {
 				var vehicle = _context.Vehicles.FirstOrDefault(v => v.Id == id);
-				if (vehicle == null) {
+				if (vehicle is null) {
 					return NotFound("Nenhum veículo com esse ID foi encontrado...");
 				}
 				_context.Vehicles.Remove(vehicle);
