@@ -10,11 +10,11 @@ namespace ConcessionariaAPI.Models {
 		[Key]
 		public int Id { get; set; }
 
-		[Required]
+		[Required(ErrorMessage = "O nome é obrigatório.")]
 		[StringLength(80)]
 		public string? Name { get; set; }
 		
-		[Required]
+		[Required(ErrorMessage = "A cor é obrigatória.")]
 		[StringLength(20)]
 		public string? Color { get; set; }
 		public int BrandId { get; set; }

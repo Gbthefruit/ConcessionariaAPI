@@ -92,5 +92,23 @@ namespace ConcessionariaAPI.Controllers {
 				return StatusCode(StatusCodes.Status500InternalServerError, "Ocorreu um erro com a sua solicitação.");
 			}
 		}
+
+		[HttpDelete("{id:int}")]
+		public ActionResult Delete(int id) {
+
+			try {
+				var brand = _context.Brands.FirstOrDefault(c => c.Id == id);
+
+				if (brand is null) {
+					return NotFound("Nenhuma marca com esse ID foi encontrada...");
+				}
+				_context.Remove(brand);
+				_context.SaveChanges();
+				return Ok(brand);
+			}
+			catch (Exception) {
+				return StatusCode(StatusCodes.Status500InternalServerError, "Ocorreu um erro com a sua solicitação.");
+			}
+		}
 	}
 }
